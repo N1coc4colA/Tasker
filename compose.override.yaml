@@ -9,6 +9,6 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
     volumes:
-      - ./:/app
-      - ./frankenphp/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./frankenphp/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
+      - ./:/app:Z
+      - ./frankenphp/Caddyfile:/etc/caddy/Caddyfile:roZ
+      - ./frankenphp/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:roZ
