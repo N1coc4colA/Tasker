@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use App\Entity\Project;
 use App\Entity\User;
@@ -8,25 +8,44 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class RegisterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username')
-            ->add('roles')
-            ->add('password')
-            ->add('firstName')
-            ->add('lastName')
-            ->add('projects', EntityType::class, [
-                'class' => Project::class,
-                'choice_label' => 'id',
-                'multiple' => true,
+            ->add('username', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Username'
+                ],
+                'required' => true,
+                'label' => 'Username'
             ])
-            ->add('selectedProject', EntityType::class, [
-                'class' => Project::class,
-                'choice_label' => 'id',
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'required' => true,
+                'first_options' => [
+                    'attr' => [
+                        'placeholder' => 'Password'
+                    ],
+                    'label' => 'Password'
+                ],
+                'second_options' => [
+                    'attr' => [
+                        'placeholder' => 'Confirm password'
+                    ],
+                    'label' => 'Confirm password'
+                ],
+            ])
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-lg btn-primary w-100'
+                ],
+                'label' => 'Sign up'
             ])
         ;
     }
