@@ -15,11 +15,11 @@ security:
 
         main:
             form_login:
-                check_path: app_login
-                login_path: app_login
+                check_path: login_index
+                login_path: login_index
 
             logout:
-                target: app_login
+                target: login_index
 
             lazy: true
             provider: app_user_provider
