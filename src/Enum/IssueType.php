@@ -17,11 +17,11 @@ enum IssueType : int
     public function label(): string
     {
         return match($this) {
-            self::BUG => '<i class="bi bi-bug-fill"></i> Bug',
-            self::FEATURE => '<i class="bi bi-file-plus-fill"></i> Feature',
-            self::STORY => '<i class="bi bi-camera-reels-fill"></i> Story',
-            self::TASK => '<i class="bi bi-wrench"></i> Task',
-            self::EPIC => '<i class="bi bi-fire"></i> Epic',
+            self::BUG => 'Bug',
+            self::FEATURE => 'Feature',
+            self::STORY => 'Story',
+            self::TASK => 'Task',
+            self::EPIC => 'Epic',
         };
     }
 }
