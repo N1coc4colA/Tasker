@@ -43,31 +43,37 @@ class IssueType extends AbstractType
                 'choice_label' => fn(\App\Enum\IssueType $type) => $type->label(),
                 'class' => \App\Enum\IssueType::class,
                 'data' => \App\Enum\IssueType::BUG,
-                'label' => 'Type',
+                'label' => '<i class="bi bi-sign-intersection-t-fill"></i> Type',
+                'label_html' => true,
             ])
             ->add('status', EnumType::class, [
                 'choice_label' => fn(IssueStatus $status) => $status->label(),
                 'class' => \App\Enum\IssueStatus::class,
                 'data' => \App\Enum\IssueStatus::NEW,
-                'label' => 'Status',
+                'label' => '<i class="bi bi-stoplights-fill"></i> Status',
+                'label_html' => true,
             ])
             ->add('summary', TextType::class, [
-                'label' => 'Summary',
+                'label' => '<i class="bi bi-justify-left"></i> Summary',
+                'label_html' => true,
             ])
             ->add('assignee', EntityType::class, [
                 'class' => User::class,
                 'choices' => !$project ? [] : $project->getMembers(),
                 'placeholder' => 'Assignee',
-                'label' => 'Assignee',
+                'label' => '<i class="bi bi-person-fill"></i> Assignee',
+                'label_html' => true,
             ])
             ->add('reporter', EntityType::class, [
                 'class' => User::class,
                 'choices' => !$project ? [] : $project->getMembers(),
                 'data' => $this->security->getUser(),
-                'label' => 'Reporter',
+                'label' => '<i class="bi bi-megaphone-fill"></i> Reporter',
+                'label_html' => true,
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Create',
+                'label' => '<i class="bi bi-plus-circle-fill"></i> Create',
+                'label_html' => true,
             ])
         ;
     }

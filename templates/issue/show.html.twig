@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="card">
-                            <div class="card-header">Details</div>
+                            <div class="card-header"><i class="bi bi-receipt-cutoff"></i> Details</div>
                             <div class="card-body">
                                 <table class="table">
                                     <thead>
@@ -44,7 +44,7 @@
                                     <tbody class="align-middle">
                                         <tr>
                                             <td class="fw-bold">
-                                                <small>Assignee</small>
+                                                <small><i class="bi bi-person-fill"></i> Assignee</small>
                                             </td>
                                             <td>
                                                 {{ component('SelectIssueAssignee', {
@@ -55,7 +55,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold"><small>Estimated Days</small></td>
+                                            <td class="fw-bold"><small><i class="bi bi-calendar-range-fill"></i> Estimated Days</small></td>
                                             <td>
                                                 {{ component('InputStoryPointEstimate', {
                                                     'issue': issue,
@@ -64,7 +64,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">
-                                                <small>Reporter</small>
+                                                <small><i class="bi bi-megaphone-fill"></i> Reporter</small>
                                             </td>
                                             <td>
                                                 {{ component('SelectIssueReporter', {

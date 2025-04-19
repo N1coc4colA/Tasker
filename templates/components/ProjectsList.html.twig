@@ -9,10 +9,10 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th class="w-50">Name</th>
-                    <th class="w-25">Key</th>
-                    <th class="w-25">Assignee</th>
-                    <th class="text-center">Actions</th>
+                    <th class="w-50"><i class="bi bi-explicit-fill"></i> Name</th>
+                    <th class="w-25"><i class="bi bi-tag-fill"></i> Key</th>
+                    <th class="w-25"><i class="bi bi-person-fill"></i> Assignee</th>
+                    <th class="text-center"><i class="bi bi-three-dots-vertical"></i> Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,8 +22,8 @@
                         <td>{{ project.keyCode }}</td>
                         <td>{{ project.lead }}</td>
                         <td class="hstack gap-3 text-center">
-                            <a class="btn btn-sm btn-primary" href="{{ path('project_show', {'keyCode': project.keyCode}) }}">See</a>
-                            <button class="btn btn-sm btn-danger" data-action="live#action:prevent" data-live-action-param="deleteProject" data-live-key-code-param="{{ project.keyCode }}">Delete</button>
+                            <a class="btn btn-sm btn-primary" href="{{ path('project_show', {'keyCode': project.keyCode}) }}">See <i class="bi bi-arrow-up-right-square-fill"></i></a>
+                            <button class="btn btn-sm btn-danger" data-action="live#action:prevent" data-live-action-param="deleteProject" data-live-key-code-param="{{ project.keyCode }}">Delete <i class="bi bi-trash2-fill"></i></button>
                         </td>
                     </tr>
                 {% endfor %}

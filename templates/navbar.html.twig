@@ -10,20 +10,20 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
                     <ul class="dropdown-menu">
                         <li style="{{ app.user.selectedProject is null ? 'display: none;' : '' }}">
-                            <a class="dropdown-item" href="{{ app.user.selectedProject is null ? '' : path('project_show', { 'keyCode': app.user.selectedProject.keyCode }) }}">{{ app.user.selectedProject }}</a>
+                            <a class="dropdown-item" href="{{ app.user.selectedProject is null ? '' : path('project_show', { 'keyCode': app.user.selectedProject.keyCode }) }}"><i class="bi bi-arrow-up-right-square-fill"></i> {{ app.user.selectedProject }}</a>
                         </li>
                         <li style="{{ app.user.selectedProject is null ? 'display: none;' : '' }}"><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{  path('project_list') }}">All projects</a></li>
-                        <li><a class="dropdown-item" data-bs-target="#modalCreateProject" data-bs-toggle="modal" href="#">New project</a></li>
+                        <li><a class="dropdown-item" href="{{  path('project_list') }}"><i class="bi bi-grid-1x2-fill"></i> All projects</a></li>
+                        <li><a class="dropdown-item" data-bs-target="#modalCreateProject" data-bs-toggle="modal" href="#"><i class="bi bi-plus-circle-fill"></i> New project</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-target="#modalCreateIssue" data-bs-toggle="modal" href="#">Ticket</a>
+                    <a class="nav-link" data-bs-target="#modalCreateIssue" data-bs-toggle="modal" href="#"><i class="bi bi-ticket-perforated-fill"></i> Ticket</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                    <a class="nav-link" href="{{ path('app_logout') }}"><i class="bi bi-person-fill-lock"></i> Logout</a>
                 </li>
             </ul>
         </div>

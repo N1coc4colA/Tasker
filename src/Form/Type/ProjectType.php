@@ -24,10 +24,12 @@ class ProjectType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Name',
+                'label' => '<i class="bi bi-explicit-fill"></i> Name',
+                'label_html' => true,
             ])
             ->add('keyCode', TextType::class, [
-                'label' => 'Key',
+                'label' => '<i class="bi bi-tag-fill"></i> Key',
+                'label_html' => true,
             ])
             ->add('leadUser', EntityType::class, [
                 'attr' => [
@@ -38,7 +40,8 @@ class ProjectType extends AbstractType
                 'label' => false,
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Create project',
+                'label' => '<i class="bi bi-plus-circle-fill"></i> Create project',
+                'label_html' => true,
             ])
         ;
     }
