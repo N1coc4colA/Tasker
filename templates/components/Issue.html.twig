@@ -37,7 +37,7 @@
                 <input class="form-control" name="attachment" type="file">
                 <button class="btn btn-outline-primary" data-action="live#action" data-live-action-param="files(attachment)|addAttachment"><i class="bi bi-file-earmark-plus-fill"></i> Attach</button>
             </div>
-            <div class="overflow-x-auto container-fluid">
+            <div class="overflow-x-auto container-fluid" {{ (attachments is empty) ? 'style="display:none"' : '' }}>
                 <div class="flex-row flex-nowrap mb-3 row">
                     {% for attachment in attachments %}
                         <div class="col-sm-4 mb-3">
