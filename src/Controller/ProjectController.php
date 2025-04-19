@@ -12,8 +12,8 @@ class ProjectController extends AbstractController
     #[Route('/projects/{keyCode}', name: 'project_show')]
     public function show(?Project $project): Response
     {
-        return $this->render('project/index.html.twig', [
-            'controller_name' => 'ProjectController',
+        return $this->render('project/show.html.twig', [
+            'project' => $project,
         ]);
     }
 }

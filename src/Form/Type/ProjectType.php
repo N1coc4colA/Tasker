@@ -35,7 +35,7 @@ class ProjectType extends AbstractType
                 ],
                 'class' => User::class,
                 'data' => $this->security->getUser(),
-                'label' => false
+                'label' => false,
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Créer',

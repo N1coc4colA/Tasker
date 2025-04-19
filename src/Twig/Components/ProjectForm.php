@@ -40,10 +40,15 @@ class ProjectForm extends AbstractController
 
         $project = $this->getForm()->getData();
         $manager->persist($project);
+
+        $user = $this->getUser();
+        $user->addProject($project);
+        $user->setSelectedProject($project);
+
         $manager->flush();
 
         return $this->redirectToRoute('project_show', [
-            'keyCode' => $this->initialProject->getKeyCode(),
+            'keyCode' => $project->getKeyCode()
         ]);
     }
 }
