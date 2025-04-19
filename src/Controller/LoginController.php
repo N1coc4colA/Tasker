@@ -10,11 +10,17 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends AbstractController
 {
     #[Route('/login', name: 'login_index')]
-    public function index(AuthenticationUtils $authUtils): Response
+    public function index(AuthenticationUtils $authenticationUtils): Response
     {
         return $this->render('login/index.html.twig', [
-            'error' => $authUtils->getLastAuthenticationError(),
-            'last_username' => $authUtils->getLastUsername(),
+            'error' => $authenticationUtils->getLastAuthenticationError(),
+            'last_username' => $authenticationUtils->getLastUsername(),
         ]);
+    }
+    
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(): void
+    {
+        throw new \LogicException('Cette méthode ne devrait jamais être appelée directement.');
     }
 }

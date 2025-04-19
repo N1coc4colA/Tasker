@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
-class Project
+class Project implements \Stringable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,7 +21,7 @@ class Project
     private ?string $name = null;
 
     #[Assert\NotBlank]
-    #[Assert\Length(min: 2, max: 5)]
+    #[Assert\Lenght(min: 2,max: 5)]
     #[ORM\Column(length: 5)]
     private ?string $keyCode = null;
 
@@ -140,5 +140,10 @@ class Project
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

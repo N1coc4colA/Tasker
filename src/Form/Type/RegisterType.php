@@ -7,11 +7,11 @@ use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegisterType extends AbstractType
 {
@@ -20,32 +20,32 @@ class RegisterType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Identifiant',
+                    'placeholder' => "Nom d'utilisateur",
                 ],
                 'required' => true,
-                'label' => 'Identifiant',
+                'label' => "Nom d'utilisateur",
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => true,
                 'first_options' => [
                     'attr' => [
-                        'placeholder' => 'Mot de passe'
+                        'placeholder' => 'Mot de passe',
                     ],
-                    'label' => 'Mot de passe'
+                    'label' => 'Mot de passe',
                 ],
                 'second_options' => [
                     'attr' => [
-                        'placeholder' => 'Mot de passe confirmé'
+                        'placeholder' => 'Confirmation du mot de passe',
                     ],
-                    'label' => 'Confirmez le mot de passe'
+                    'label' => 'Confirmation du mot de passe',
                 ],
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-lg btn-primary w-100'
+                    'class' => 'btn btn-lg btn-primary w-100',
                 ],
-                'label' => 'Inscription'
+                'label' => "S'inscrire",
             ])
         ;
     }

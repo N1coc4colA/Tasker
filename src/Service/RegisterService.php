@@ -9,22 +9,16 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class RegisterService
 {
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
+        private readonly EntityManagerInterface $manager,
         private readonly UserPasswordHasherInterface $passwordHasher
     )
     {
     }
 
-    public function registerUser($user): void
+    public function register(User $user): void
     {
-        $user->setPassword(
-            $this->passwordHasher->hashPassword(
-                $user,
-                $user->getPassword()
-            )
-        );
-
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
+        $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
+        $this->manager->persist($user);
+        $this->manager->flush();
     }
 }
