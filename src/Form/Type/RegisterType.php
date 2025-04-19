@@ -20,32 +20,32 @@ class RegisterType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'attr' => [
-                    'placeholder' => "Nom d'utilisateur",
+                    'placeholder' => "Username",
                 ],
                 'required' => true,
-                'label' => "Nom d'utilisateur",
+                'label' => "Username",
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => true,
                 'first_options' => [
                     'attr' => [
-                        'placeholder' => 'Mot de passe',
+                        'placeholder' => 'Password',
                     ],
-                    'label' => 'Mot de passe',
+                    'label' => 'Password',
                 ],
                 'second_options' => [
                     'attr' => [
-                        'placeholder' => 'Confirmation du mot de passe',
+                        'placeholder' => 'Confirm password',
                     ],
-                    'label' => 'Confirmation du mot de passe',
+                    'label' => 'Confirm password',
                 ],
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-lg btn-primary w-100',
                 ],
-                'label' => "S'inscrire",
+                'label' => "Sign up",
             ])
         ;
     }

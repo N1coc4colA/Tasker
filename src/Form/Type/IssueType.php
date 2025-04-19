@@ -29,7 +29,6 @@ class IssueType extends AbstractType
     {
         /** @var Project $project */ 
         $project = $this->security->getUser()->getSelectedProject();
-        //dd($project);
 
         $builder
             ->add('project', EntityType::class, [
@@ -50,25 +49,25 @@ class IssueType extends AbstractType
                 'choice_label' => fn(IssueStatus $status) => $status->label(),
                 'class' => \App\Enum\IssueStatus::class,
                 'data' => \App\Enum\IssueStatus::NEW,
-                'label' => 'Statut',
+                'label' => 'Status',
             ])
             ->add('summary', TextType::class, [
-                'label' => 'Résumé',
+                'label' => 'Summary',
             ])
             ->add('assignee', EntityType::class, [
                 'class' => User::class,
                 'choices' => !$project ? [] : $project->getMembers(),
-                'placeholder' => 'Assigné',
-                'label' => 'Assigné',
+                'placeholder' => 'Assignee',
+                'label' => 'Assignee',
             ])
             ->add('reporter', EntityType::class, [
                 'class' => User::class,
                 'choices' => !$project ? [] : $project->getMembers(),
                 'data' => $this->security->getUser(),
-                'label' => 'Rapporteur',
+                'label' => 'Reporter',
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Créer',
+                'label' => 'Create',
             ])
         ;
     }

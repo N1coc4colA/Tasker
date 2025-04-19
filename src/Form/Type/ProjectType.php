@@ -20,15 +20,14 @@ class ProjectType extends AbstractType
     {
     }
 
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom',
+                'label' => 'Name',
             ])
             ->add('keyCode', TextType::class, [
-                'label' => 'Clé',
+                'label' => 'Key',
             ])
             ->add('leadUser', EntityType::class, [
                 'attr' => [
@@ -39,7 +38,7 @@ class ProjectType extends AbstractType
                 'label' => false,
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Créer un projet',
+                'label' => 'Create project',
             ])
         ;
     }
