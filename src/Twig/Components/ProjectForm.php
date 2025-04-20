@@ -17,7 +17,7 @@ use Symfony\UX\LiveComponent\ValidatableComponentTrait;
 
 #[AsLiveComponent]
 class ProjectForm extends AbstractController
-{   
+{
     use ComponentWithFormTrait;
     use DefaultActionTrait;
     use ValidatableComponentTrait;
