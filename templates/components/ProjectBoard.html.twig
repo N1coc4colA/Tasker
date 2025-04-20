@@ -1,30 +1,30 @@
-<div {{ attributes }} class="row">
-    <div class="col-md-4 col-sm-12">
+<div {{ attributes.defaults(stimulus_controller('ProjectBoardController')) }} class="row">
+    <div class="col-md-4 col-sm-12 mb-3">
         {{ _self.card('Ready', '2', readyIssues) }}
     </div>
 
-    <div class="col-md-4 col-sm-12">
+    <div class="col-md-4 col-sm-12 mb-3">
         {{ _self.card('In progress', '3', inProgressIssues) }}
     </div>
 
-    <div class="col-md-4 col-sm-12">
+    <div class="col-md-4 col-sm-12 mb-3">
         {{ _self.card('Solved', '5', resolvedIssues) }}
     </div>
 </div>
 
 {% macro card(title, statusId, issues) %}
     <div class="card">
-        <div class="card-header fw-bold, text-center text-uppercase">{{ title }}</div>
+        <div class="card-header fw-bold text-center text-uppercase">{{ title }}</div>
         <div class="card-body">
-            <ul class="list-group pb-4" data-status="{{ statusId }}">
+            <div class="list-group pb-4 issue-container" data-status="{{ statusId }}">
                 {% for issue in issues %}
-                    <button class="list-group-item list-group-item-action" draggable="true">
-                        <a class="fw-bold text-decoration-none" href="{{ path('issue_show', { 'id': issue.id }) }}">{{ issue.keyCode }}</a>
-                        </br>
+                    <button class="list-group-item list-group-item-action issue-item" id="{{ issue.id }}" draggable=true>
+                        <a class="fw-bold text-decoration-none" draggable=false href="{{ path('issue_show', { 'id': issue.id }) }}">{{ issue.keyCode }}</a>
+                        <br>
                         <span class="small">{{ issue.summary }}</span>
                     </button>
                 {% endfor %}
-            </ul>
+            </div>
         </div>
     </div>
 {% endmacro %}

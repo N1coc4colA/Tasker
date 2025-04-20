@@ -15,12 +15,12 @@ class IssueService
     {
     }
 
-    public function getInProgressIssues(): array
+    public function getReadyIssues(): array
     {
         return $this->getIssuesByStatus([IssueStatus::READY]);
     }
 
-    public function getReadyIssues(): array
+    public function getInProgressIssues(): array
     {
         return $this->getIssuesByStatus([IssueStatus::IN_DEVELOPMENT, IssueStatus::IN_REVIEW]);
     }
@@ -37,7 +37,7 @@ class IssueService
         return $user
             ->getSelectedProject()
             ->getIssues()
-            ->filter(fn($issue) => in_array($issue->getStatus(), $statuses))
+            ->filter(fn($issue) => \in_array($issue->getStatus(), $statuses))
             ->toArray();
     }
 }
