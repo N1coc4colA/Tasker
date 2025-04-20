@@ -50,14 +50,11 @@ class AttachmentService
 
     public function delete(Attachment $attachment): void
     {
-        // Extraire le nom du fichier de la propriété path
         $dbPath = $attachment->getPath();
         $filename = basename($dbPath);
-        
-        // Construire le chemin physique complet du fichier
+
         $filepath = $this->attachmentsDirectory . '/' . $filename;
-        
-        // Vérifier que le fichier existe avant de le supprimer
+
         if (file_exists($filepath)) {
             unlink($filepath);
         }
