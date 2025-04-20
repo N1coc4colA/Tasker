@@ -1,20 +1,24 @@
 <div {{ attributes.defaults(stimulus_controller('ProjectBoardController')) }} class="row">
-    <div class="col-md-4 col-sm-12 mb-3">
-        {{ _self.card('Ready', '2', readyIssues) }}
+    <div class="col-md-3 col-sm-12 mb-3">
+        {{ _self.card('bi-star-fill', 'New', '2', readyIssues) }}
     </div>
 
-    <div class="col-md-4 col-sm-12 mb-3">
-        {{ _self.card('In progress', '3', inProgressIssues) }}
+    <div class="col-md-3 col-sm-12 mb-3">
+        {{ _self.card('bi-clock-fill', 'Ready', '2', readyIssues) }}
     </div>
 
-    <div class="col-md-4 col-sm-12 mb-3">
-        {{ _self.card('Solved', '5', resolvedIssues) }}
+    <div class="col-md-3 col-sm-12 mb-3">
+        {{ _self.card('bi-braces-asterisk', 'In progress', '3', inProgressIssues) }}
+    </div>
+
+    <div class="col-md-3 col-sm-12 mb-3">
+        {{ _self.card('bi-check-circle-fill', 'Solved', '5', resolvedIssues) }}
     </div>
 </div>
 
-{% macro card(title, statusId, issues) %}
+{% macro card(icon, title, statusId, issues) %}
     <div class="card">
-        <div class="card-header fw-bold text-center text-uppercase">{{ title }}</div>
+        <div class="card-header fw-bold text-center text-uppercase"><i class="bi {{ icon }}"></i> {{ title }}</div>
         <div class="card-body">
             <div class="list-group pb-4 issue-container" data-status="{{ statusId }}">
                 {% for issue in issues %}
