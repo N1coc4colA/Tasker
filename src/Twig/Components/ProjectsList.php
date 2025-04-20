@@ -3,6 +3,7 @@
 namespace App\Twig\Components;
 
 use App\Service\ProjectService;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
@@ -18,7 +19,8 @@ class ProjectsList
     public array $projects = [];
 
     public function __construct(
-        private readonly ProjectService $projectService
+        private readonly ProjectService $projectService,
+        private readonly Security $security
     )
     {
     }
@@ -28,8 +30,14 @@ class ProjectsList
     {
         $project = $this->projectService->findOneByKeyCode($keyCode);
 
+        $selectedProject = $this->security->getUser()->getSelectedProject();
+
         if (!$project) {
             return;
+        }
+
+        if ($selectedProject == $project) {
+            $this->security->getUser()->setSelectedProject(null);
         }
 
         $this->projectService->remove($project);

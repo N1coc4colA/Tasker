@@ -27,7 +27,7 @@ class IssueType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        /** @var Project $project */ 
+        /** @var Project $project */
         $project = $this->security->getUser()->getSelectedProject();
 
         $builder
