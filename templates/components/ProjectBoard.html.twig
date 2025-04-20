@@ -1,2 +1,30 @@
-<div {{ attributes }}>
+<div {{ attributes }} class="row">
+    <div class="col-md-4 col-sm-12">
+        {{ _self.card('Ready', '2', readyIssues) }}
+    </div>
+
+    <div class="col-md-4 col-sm-12">
+        {{ _self.card('In progress', '3', inProgressIssues) }}
+    </div>
+
+    <div class="col-md-4 col-sm-12">
+        {{ _self.card('Solved', '5', resolvedIssues) }}
+    </div>
 </div>
+
+{% macro card(title, statusId, issues) %}
+    <div class="card">
+        <div class="card-header fw-bold, text-center text-uppercase">{{ title }}</div>
+        <div class="card-body">
+            <ul class="list-group pb-4" data-status="{{ statusId }}">
+                {% for issue in issues %}
+                    <button class="list-group-item list-group-item-action" draggable="true">
+                        <a class="fw-bold text-decoration-none" href="{{ path('issue_show', { 'id': issue.id }) }}">{{ issue.keyCode }}</a>
+                        </br>
+                        <span class="small">{{ issue.summary }}</span>
+                    </button>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
