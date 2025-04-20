@@ -22,9 +22,30 @@ export default class ProjectBoardController extends Controller
             };
         });
 
+        document.querySelectorAll('.issue-container-other').forEach(issueContainerColumn => {
+            issueContainerColumn.ondrop = (ev) => {
+                ev.preventDefault();
+
+                const realTarget = document.getElementById("issue-container-" + ev.target.dataset['status']);
+                if (!realTarget) {
+                    console.log("Failed to obtain column");
+                    return;
+                }
+
+                const issueId = ev.dataTransfer.getData('text/plain');
+
+                this.component.action('updateIssueStatus', {id: issueId, status: ev.target.dataset['status']});
+                console.log(document.getElementById(issueId))
+                realTarget.appendChild(document.getElementById(issueId));
+            };
+
+            issueContainerColumn.ondragover = (ev) => {
+                ev.preventDefault();
+            };
+        });
+
         document.querySelectorAll('.issue-item').forEach(issueItem => {
             issueItem.addEventListener('dragstart', (ev) => {
-                console.log(ev.target.id);
                 ev.dataTransfer.dropEffect = 'move';
                 ev.dataTransfer.setData('text/plain', ev.target.id);
             });

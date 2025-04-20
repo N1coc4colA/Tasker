@@ -7,10 +7,10 @@
 
 {% macro card(icon, title, statusId, issues) %}
     <div class="col-md-3 col-sm-12 mb-3">
-        <div class="card">
-            <div class="card-header fw-bold text-center text-uppercase"><i class="bi {{ icon }}"></i> {{ title }}</div>
+        <div class="card issue-container-column" data-status="{{ statusId }}">
+            <div class="card-header fw-bold text-center text-uppercase issue-container-other" data-status="{{ statusId }}"><i class="bi {{ icon }}"></i> {{ title }}</div>
             <div class="card-body">
-                <div class="list-group pb-4 issue-container" data-status="{{ statusId }}">
+                <div class="list-group pb-4 issue-container" id="issue-container-{{ statusId }}" data-status="{{ statusId }}">
                     {% for issue in issues %}
                         <button class="list-group-item list-group-item-action issue-item" id="{{ issue.id }}" draggable=true>
                             <a class="fw-bold text-decoration-none" draggable=false href="{{ path('issue_show', { 'id': issue.id }) }}">{{ issue.keyCode }}</a>
