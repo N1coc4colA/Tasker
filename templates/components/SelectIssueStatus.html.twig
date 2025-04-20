@@ -1,5 +1,5 @@
 <div {{ attributes }} >
-    <select aria-label="Statut" class="form-select mb-3" data-action="live#action" data-live-action-param="updateStatus" data-model="status">
+    <select aria-label="Status" class="form-select mb-3" data-action="live#action" data-live-action-param="updateStatus" data-model="status">
         {% for status in statuses %}
             {% if issue.status == status %}
                 <option value="{{ status.value }}" selected>{{ status.label }}</option>
