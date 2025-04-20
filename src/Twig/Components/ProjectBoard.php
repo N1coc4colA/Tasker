@@ -18,6 +18,10 @@ class ProjectBoard
 
     /** @var \App\Entity\Issue[] */
     #[LiveProp(writable: true)]
+    public array $newIssues = [];
+
+    /** @var \App\Entity\Issue[] */
+    #[LiveProp(writable: true)]
     public array $readyIssues = [];
 
     /** @var \App\Entity\Issue[] */
@@ -43,6 +47,7 @@ class ProjectBoard
     #[LiveAction]
     public function getIssues(): void
     {
+        $this->newIssues = $this->service->getNewIssues();
         $this->readyIssues = $this->service->getReadyIssues();
         $this->inProgressIssues = $this->service->getInProgressIssues();
         $this->resolvedIssues = $this->service->getResolvedIssues();

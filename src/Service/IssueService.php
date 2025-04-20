@@ -15,6 +15,11 @@ class IssueService
     {
     }
 
+    public function getNewIssues(): array
+    {
+        return $this->getIssuesByStatus([IssueStatus::NEW]);
+    }
+
     public function getReadyIssues(): array
     {
         return $this->getIssuesByStatus([IssueStatus::READY]);
