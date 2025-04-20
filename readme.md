@@ -29,3 +29,7 @@ php bin/console doctrine:migrations:migrate
 
 ## Deploying
 Before performing the build, copy `compose.prod.yaml` to `compose.override.yaml`. This will make frankenphp run in production mode instead of dev.
+Do not forget to change the APP_SECRET variable. You can generate a new one with PHP:
+```sh
+php -r "echo bin2hex(random_bytes(32));"
+```
