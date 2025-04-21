@@ -2,9 +2,11 @@ services:
   tasker-db:
     image: mariadb:10.11
     ports:
-      - ${MYSQL_PORT}:3306
+      - ${MYSQL_PORT}:${MYSQL_PORT}
     environment:
       MYSQL_HOST: ${MYSQL_HOST} # Should be tasker-db
+      MYSQL_TCP_PORT: ${MYSQL_HOST}
+      MYSQL_UNIX_PORT: ${MYSQL_HOST}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
@@ -17,6 +19,8 @@ services:
     environment:
       MYSQL_HOST: ${MYSQL_HOST} # Should be tasker-db
       MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_TCP_PORT: ${MYSQL_HOST}
+      MYSQL_UNIX_PORT: ${MYSQL_HOST}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
