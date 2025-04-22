@@ -5,13 +5,13 @@ services:
       - ${MYSQL_PORT}:${MYSQL_PORT}
     environment:
       MYSQL_HOST: ${MYSQL_HOST} # Should be tasker-db
-      MYSQL_TCP_PORT: ${MYSQL_HOST}
-      MYSQL_UNIX_PORT: ${MYSQL_HOST}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MARIADB_AUTO_UPGRADE: ${MARIADB_AUTO_UPGRADE}
+      MYSQL_UNIX_PORT: ${MYSQL_PORT}
+      MYSQL_TCP_PORT: ${MYSQL_PORT}
 
   tasker-php:
     depends_on:
@@ -19,8 +19,8 @@ services:
     environment:
       MYSQL_HOST: ${MYSQL_HOST} # Should be tasker-db
       MYSQL_PORT: ${MYSQL_PORT}
-      MYSQL_TCP_PORT: ${MYSQL_HOST}
-      MYSQL_UNIX_PORT: ${MYSQL_HOST}
+      MYSQL_TCP_PORT: ${MYSQL_PORT}
+      MYSQL_UNIX_PORT: ${MYSQL_PORT}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
@@ -32,7 +32,7 @@ services:
       TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
     build:
       context: .
-      target: frankenphp_dev
+      target: frankenphp_prod
     volumes:
       - ./:/app:Z
       - ./frankenphp/Caddyfile:/etc/caddy/Caddyfile:roZ
@@ -44,15 +44,15 @@ services:
     ports:
       # HTTP
       - target: 80
-        published: "80"
+        published: 80
         protocol: tcp
       # HTTPS
       - target: 443
-        published: "443"
+        published: 443
         protocol: tcp
       # HTTP/3
       - target: 443
-        published: "443"
+        published: 443
         protocol: udp
 
 volumes:
